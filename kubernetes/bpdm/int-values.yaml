@@ -1,0 +1,22 @@
+replicaCount: 1
+
+#Spring profiles under which the application should run
+springProfiles:
+  - int
+
+applicationSecrets:
+  name: dev-bpdm-application
+  mappings:
+    db-user: BPDM_DB_USER
+    db-pass: BPDM_DB_PASS
+    keycloak-secret: BPDM_KEYCLOAK_SECRET
+    cdq-key: BPDM_CDQ_KEY
+
+ingress:
+  host: catenax-bpdm-int.demo.catena-x.net
+
+elastic:
+  enabled: true
+
+postgres:
+  enabled: true
