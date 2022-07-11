@@ -2,7 +2,7 @@ project: project-bpdm
 source:
   repoURL: 'https://github.com/catenax-ng/product-bpdm.git'
   path: helm/bpdm
-  targetRevision: main
+  targetRevision: 'release/v1'
   plugin:
     name: argocd-vault-plugin-helm-args
     env:
