@@ -1,17 +1,17 @@
 package org.eclipse.tractusx.bpdm.pool.component.cdq.service
 
 import com.neovisionaries.i18n.CountryCode
-import org.eclipse.tractusx.bpdm.common.dto.IdentifierDto
+import org.eclipse.tractusx.bpdm.common.dto.*
 import org.eclipse.tractusx.bpdm.common.dto.cdq.*
+import org.eclipse.tractusx.bpdm.common.dto.response.type.TypeKeyNameDto
+import org.eclipse.tractusx.bpdm.common.dto.response.type.TypeKeyNameUrlDto
+import org.eclipse.tractusx.bpdm.common.dto.response.type.TypeNameUrlDto
 import org.eclipse.tractusx.bpdm.common.model.BusinessPartnerType
 import org.eclipse.tractusx.bpdm.common.model.HasDefaultValue
 import org.eclipse.tractusx.bpdm.common.service.CdqMappings
 import org.eclipse.tractusx.bpdm.pool.component.cdq.config.CdqIdentifierConfigProperties
-import org.eclipse.tractusx.bpdm.pool.dto.GeoCoordinateDto
-import org.eclipse.tractusx.bpdm.pool.dto.request.*
-import org.eclipse.tractusx.bpdm.pool.dto.response.type.TypeKeyNameDto
-import org.eclipse.tractusx.bpdm.pool.dto.response.type.TypeKeyNameUrlDto
-import org.eclipse.tractusx.bpdm.pool.dto.response.type.TypeNameUrlDto
+import org.eclipse.tractusx.bpdm.pool.dto.request.BusinessPartnerRequest
+import org.eclipse.tractusx.bpdm.pool.dto.request.LegalFormRequest
 import org.springframework.stereotype.Service
 
 @Service
@@ -74,8 +74,8 @@ class CdqRequestMappingService(
         return TypeNameUrlDto(category.name!!, category.url)
     }
 
-    fun toRequest(address: AddressCdq): AddressRequest {
-        return AddressRequest(
+    fun toRequest(address: AddressCdq): AddressDto {
+        return AddressDto(
             null,
             toRequest(address.version),
             address.careOf?.value,
@@ -92,12 +92,12 @@ class CdqRequestMappingService(
         )
     }
 
-    fun toRequest(version: AddressVersionCdq?): AddressVersionRequest {
-        return AddressVersionRequest(toTypeOrDefault(version?.characterSet), CdqMappings.toLanguageCode(version?.language))
+    fun toRequest(version: AddressVersionCdq?): AddressVersionDto {
+        return AddressVersionDto(toTypeOrDefault(version?.characterSet), CdqMappings.toLanguageCode(version?.language))
     }
 
-    fun toRequest(area: AdministrativeAreaCdq): AdministrativeAreaRequest {
-        return AdministrativeAreaRequest(
+    fun toRequest(area: AdministrativeAreaCdq): AdministrativeAreaDto {
+        return AdministrativeAreaDto(
             area.value,
             area.shortName,
             null,
@@ -105,16 +105,16 @@ class CdqRequestMappingService(
         )
     }
 
-    fun toRequest(postcode: PostCodeCdq): PostCodeRequest {
-        return PostCodeRequest(postcode.value, CdqMappings.toTypeOrDefault(postcode.type))
+    fun toRequest(postcode: PostCodeCdq): PostCodeDto {
+        return PostCodeDto(postcode.value, CdqMappings.toTypeOrDefault(postcode.type))
     }
 
-    fun toRequest(locality: LocalityCdq): LocalityRequest {
-        return LocalityRequest(locality.value, locality.shortName, CdqMappings.toTypeOrDefault(locality.type))
+    fun toRequest(locality: LocalityCdq): LocalityDto {
+        return LocalityDto(locality.value, locality.shortName, CdqMappings.toTypeOrDefault(locality.type))
     }
 
-    fun toRequest(thoroughfare: ThoroughfareCdq): ThoroughfareRequest {
-        return ThoroughfareRequest(
+    fun toRequest(thoroughfare: ThoroughfareCdq): ThoroughfareDto {
+        return ThoroughfareDto(
             thoroughfare.value ?: "",
             thoroughfare.name,
             thoroughfare.shortName,
@@ -124,8 +124,8 @@ class CdqRequestMappingService(
         )
     }
 
-    fun toRequest(premise: PremiseCdq): PremiseRequest {
-        return PremiseRequest(
+    fun toRequest(premise: PremiseCdq): PremiseDto {
+        return PremiseDto(
             premise.value,
             premise.shortName,
             premise.number,
@@ -133,8 +133,8 @@ class CdqRequestMappingService(
         )
     }
 
-    fun toRequest(deliveryPoint: PostalDeliveryPointCdq): PostalDeliveryPointRequest {
-        return PostalDeliveryPointRequest(
+    fun toRequest(deliveryPoint: PostalDeliveryPointCdq): PostalDeliveryPointDto {
+        return PostalDeliveryPointDto(
             deliveryPoint.value,
             deliveryPoint.shortName,
             deliveryPoint.number,

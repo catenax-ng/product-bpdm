@@ -1,11 +1,15 @@
 package org.eclipse.tractusx.bpdm.pool.util
 
 import com.neovisionaries.i18n.LanguageCode
+import org.eclipse.tractusx.bpdm.common.dto.AddressDto
 import org.eclipse.tractusx.bpdm.common.dto.NameDto
-import org.eclipse.tractusx.bpdm.pool.dto.request.*
-import org.eclipse.tractusx.bpdm.pool.dto.response.type.TypeKeyNameDto
-import org.eclipse.tractusx.bpdm.pool.dto.response.type.TypeKeyNameUrlDto
-import org.eclipse.tractusx.bpdm.pool.dto.response.type.TypeNameUrlDto
+import org.eclipse.tractusx.bpdm.common.dto.PremiseDto
+import org.eclipse.tractusx.bpdm.common.dto.response.type.TypeKeyNameDto
+import org.eclipse.tractusx.bpdm.common.dto.response.type.TypeKeyNameUrlDto
+import org.eclipse.tractusx.bpdm.common.dto.response.type.TypeNameUrlDto
+import org.eclipse.tractusx.bpdm.pool.dto.request.BusinessPartnerRequest
+import org.eclipse.tractusx.bpdm.pool.dto.request.LegalFormRequest
+import org.eclipse.tractusx.bpdm.pool.dto.request.SiteRequest
 
 object RequestValues {
 
@@ -48,11 +52,11 @@ object RequestValues {
     )
 
 
-    val premiseRequest1 = PremiseRequest(
+    val premiseRequest1 = PremiseDto(
         value = CommonValues.premise6
     )
 
-    val addressRequest1 = AddressRequest(
+    val addressRequest1 = AddressDto(
         bpn = null,
         premises = listOf(premiseRequest1)
     )

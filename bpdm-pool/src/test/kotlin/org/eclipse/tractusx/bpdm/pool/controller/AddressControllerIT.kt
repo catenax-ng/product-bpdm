@@ -4,10 +4,15 @@ import com.github.tomakehurst.wiremock.core.WireMockConfiguration
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension
 import org.assertj.core.api.Assertions.assertThat
 import org.eclipse.tractusx.bpdm.common.dto.cdq.BusinessPartnerCdq
+import org.eclipse.tractusx.bpdm.common.dto.response.AddressResponse
+import org.eclipse.tractusx.bpdm.common.dto.response.PremiseResponse
 import org.eclipse.tractusx.bpdm.pool.Application
 import org.eclipse.tractusx.bpdm.pool.dto.request.AddressSearchRequest
 import org.eclipse.tractusx.bpdm.pool.dto.request.BusinessPartnerRequest
-import org.eclipse.tractusx.bpdm.pool.dto.response.*
+import org.eclipse.tractusx.bpdm.pool.dto.response.AddressWithReferenceResponse
+import org.eclipse.tractusx.bpdm.pool.dto.response.BusinessPartnerResponse
+import org.eclipse.tractusx.bpdm.pool.dto.response.PageResponse
+import org.eclipse.tractusx.bpdm.pool.dto.response.SiteResponse
 import org.eclipse.tractusx.bpdm.pool.service.BusinessPartnerBuildService
 import org.eclipse.tractusx.bpdm.pool.util.*
 import org.junit.jupiter.api.BeforeEach
@@ -150,9 +155,8 @@ class AddressControllerIT @Autowired constructor(
         val searchResult =
             webTestClient.invokePostEndpoint<PageResponse<AddressWithReferenceResponse>>(EndpointValues.CATENA_ADDRESSES_SEARCH_PATH, searchRequest)
 
-        val expectedPremise = PremiseResponse(CommonValues.uuid1, CommonValues.premise6, null, null, ResponseValues.premiseType1, ResponseValues.language0)
+        val expectedPremise = PremiseResponse(CommonValues.premise6, null, null, ResponseValues.premiseType1, ResponseValues.language0)
         val expectedAddress1 = AddressResponse(
-            CommonValues.uuid1,
             CommonValues.bpn1,
             ResponseValues.version1,
             country = ResponseValues.country1,
