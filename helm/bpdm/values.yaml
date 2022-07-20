@@ -6,17 +6,14 @@ replicaCount: 1
 
 image:
   registry: ghcr.io
-  repository: catenax-ng/product-bpdm
+  repository: catenax-ng/bpdm
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "develop"
+  tag: "release-v1"
 
 imagePullSecrets: [ ]
 
 podAnnotations: { }
-
-podSecurityContext:
-  fsGroup: 2000
 
 #Spring profiles under which the application should run
 springProfiles:
@@ -42,12 +39,10 @@ autoscaling:
 
 ingress:
   className: nginx
-  annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: HTTP
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/affinity: "cookie"
-    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
-  host: catenax-bpdm-dev.demo.catena-x.net
+  createRootPath: true
+  subPath: /v1
+  hosts:
+    - partners-pool.dev.demo.catena-x.net
 
 # Following Catena-X Helm Best Practices @url: https://catenax-ng.github.io/docs/kubernetes-basics/helm
 # @url: https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits
@@ -93,8 +88,11 @@ readinessProbe:
 
 applicationSecret:
   enabled: true
-  keycloak: <path:bpdm/data/dev/keycloak#credentials-secret>
-  cdq: <path:bpdm/data/dev/cdq#api-key>
+  keycloak: <path:bpdm/data/dev/pool/keycloak#credentials-secret>
+  cdq: <path:bpdm/data/dev/pool/cdq#api-key>
+
+applicationConfig: # |
+  # property=value
 
 elastic:
   enabled: true
@@ -102,11 +100,10 @@ elastic:
     tls:
       restEncryption: false
 
-
 postgres:
   enabled: true
   auth:
     database: bpdm
-    postgresPassword: <path:bpdm/data/dev/postgresql#postgres-password>
+    postgresPassword: <path:bpdm/data/dev/pool/postgresql#postgres-password>
     username: bpdm
-    password: <path:bpdm/data/dev/postgresql#password>
+    password: <path:bpdm/data/dev/pool/postgresql#password>
