@@ -95,12 +95,14 @@ applicationConfig: # |
   # property=value
 
 elastic:
+  existingName:
   enabled: true
   security:
     tls:
       restEncryption: false
 
 postgres:
+  existingName:
   enabled: true
   auth:
     database: bpdm

@@ -58,6 +58,29 @@ Create name of application secret
 {{- end }}
 
 {{/*
+Determine service name of PostgresDb
+Infer name from deployed dependency or take name given by user if dependeny not enabled
+*/}}
+{{- define "bpdm.postgres.name" -}}
+{{- if .Values.postgres.enabled }}
+{{- include "includeWithPostgresContext" (list $ "postgresql.primary.fullname") }}
+{{- else }}
+{{- .Values.postgres.existingName }}
+{{- end }}
+
+{{/*
+Determine service name of Elasticsearc h
+Infer name from deployed dependency or take name given by user if dependeny not enabled
+*/}}
+{{- define "bpdm.elastic.name" -}}
+{{- if .Values.elastic.enabled }}
+{{- include  include "includeWithElasticContext" (list $ "elasticsearch.master.fullname") }}
+{{- else }}
+{{- .Values.elastic.existingName }}
+{{- end }}
+
+
+{{/*
 Invoke include on given definition with postgresql dependency context
 Usage: include "includeWithPostgresContext" (list $ "your_include_function_here")
 */}}

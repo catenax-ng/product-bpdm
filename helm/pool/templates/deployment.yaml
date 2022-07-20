@@ -40,9 +40,9 @@ spec:
             - name: SPRING_CONFIG_IMPORT
               value: /etc/conf/external.properties
             - name: BPDM_DB_HOST
-              value: {{ include "includeWithPostgresContext" (list $ "postgresql.primary.fullname") }}
+              value: {{ include "bpdm.postgres.name" . }}
             - name: BPDM_ELASTIC_HOST
-              value: {{ include "includeWithElasticContext" (list $ "elasticsearch.master.fullname") }}
+              value: {{ include "bpdm.elastic.name" . }}
             - name: BPDM_KEYCLOAK_SECRET
               valueFrom:
                 secretKeyRef:

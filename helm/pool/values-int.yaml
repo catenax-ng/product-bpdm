@@ -13,6 +13,8 @@ applicationSecret:
   cdq: <path:bpdm/data/int/pool/cdq#api-key>
 
 postgres:
+  existingName:
+  enabled: true
   auth:
     postgresPassword: <path:bpdm/data/int/pool/postgresql#postgres-password>
     password: <path:bpdm/data/int/pool/postgresql#password>
