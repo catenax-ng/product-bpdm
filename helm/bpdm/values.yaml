@@ -6,10 +6,10 @@ replicaCount: 1
 
 image:
   registry: ghcr.io
-  repository: catenax-ng/product-bpdm/pool
+  repository: catenax-ng/bpdm
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "develop"
+  tag: "release-v1"
 
 imagePullSecrets: [ ]
 
