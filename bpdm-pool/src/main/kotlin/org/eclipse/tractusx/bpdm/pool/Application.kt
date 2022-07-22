@@ -20,7 +20,8 @@ import org.springframework.boot.runApplication
         "org.eclipse.tractusx.bpdm.pool.controller",
         "org.eclipse.tractusx.bpdm.pool.repository",
         "org.eclipse.tractusx.bpdm.pool.service",
-        "org.eclipse.tractusx.bpdm.common"
+        "org.eclipse.tractusx.bpdm.common",
+        "org.eclipse.tractusx.bpdm.pool.component.opensearch"
     ]
 )
 @ConfigurationPropertiesScan(
