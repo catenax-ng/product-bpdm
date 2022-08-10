@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   registry: ghcr.io
-  repository: catenax-ng/bpdm
+  repository: catenax-ng/product-bpdm
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "release-v1"
@@ -41,6 +41,7 @@ ingress:
   className: nginx
   createRootPath: true
   subPath: /v1
+  tlsSecret: tls-secret
   hosts:
     - partners-pool.dev.demo.catena-x.net
 

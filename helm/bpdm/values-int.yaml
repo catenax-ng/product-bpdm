@@ -5,7 +5,9 @@ springProfiles:
   - int
 
 ingress:
-  host: catenax-bpdm-int.demo.catena-x.net
+  tlsSecret: bpdm-int-tls
+  hosts:
+    - catenax-bpdm-int.demo.catena-x.net
 
 applicationSecret:
   keycloak: <path:bpdm/data/int/keycloak#credentials-secret>
