@@ -1,0 +1,36 @@
+apiVersion: v1
+entries:
+  bpdm:
+  - apiVersion: v2
+    appVersion: 2.0.0
+    created: "2022-09-21T09:36:54.719205241Z"
+    dependencies:
+    - alias: opensearch
+      condition: opensearch.enabled
+      name: opensearch
+      repository: https://opensearch-project.github.io/helm-charts/
+      version: 2.4.0
+    - alias: postgres
+      condition: postgres.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.1
+    description: A Helm chart for deploying the BPDM service
+    digest: b70937983e477e21f45513dd26966e11359cf965ea5460a18403ee0768d462d0
+    name: bpdm
+    type: application
+    urls:
+    - https://github.com/catenax-ng/product-bpdm/releases/download/bpdm-2.0.0/bpdm-2.0.0.tgz
+    version: 2.0.0
+  bpdm-gate:
+  - apiVersion: v2
+    appVersion: 2.0.0
+    created: "2022-09-21T09:36:54.875200961Z"
+    description: A Helm chart for deploying the BPDM gate service
+    digest: cce233b4b2599e9ae3f8954acdc92e01dfd397bef4d9fd1909cec0ba4ef679cb
+    name: bpdm-gate
+    type: application
+    urls:
+    - https://github.com/catenax-ng/product-bpdm/releases/download/bpdm-gate-2.0.0/bpdm-gate-2.0.0.tgz
+    version: 2.0.0
+generated: "2022-09-21T09:36:54.875210659Z"
