@@ -24,6 +24,16 @@ entries:
     version: 2.0.0
   bpdm-gate:
   - apiVersion: v2
+    appVersion: 3.0.0
+    created: "2022-12-15T12:09:23.446308585Z"
+    description: A Helm chart for deploying the BPDM gate service
+    digest: bef17c907a44643cec46075bba8c3fc60ed7e3376b23f3689bb59d3bdfb169c0
+    name: bpdm-gate
+    type: application
+    urls:
+    - https://github.com/catenax-ng/product-bpdm/releases/download/bpdm-gate-3.0.1/bpdm-gate-3.0.1.tgz
+    version: 3.0.1
+  - apiVersion: v2
     appVersion: 2.0.0
     created: "2022-09-21T09:36:54.875200961Z"
     description: A Helm chart for deploying the BPDM gate service
@@ -33,4 +43,26 @@ entries:
     urls:
     - https://github.com/catenax-ng/product-bpdm/releases/download/bpdm-gate-2.0.0/bpdm-gate-2.0.0.tgz
     version: 2.0.0
-generated: "2022-09-21T09:36:54.875210659Z"
+  bpdm-pool:
+  - apiVersion: v2
+    appVersion: 3.0.0
+    created: "2022-12-15T12:09:23.63258111Z"
+    dependencies:
+    - alias: opensearch
+      condition: opensearch.enabled
+      name: opensearch
+      repository: https://opensearch-project.github.io/helm-charts/
+      version: 2.4.0
+    - alias: postgres
+      condition: postgres.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.1
+    description: A Helm chart for deploying the BPDM service
+    digest: d2049dc18c9ee19be414d19f4a3f48b241d77389a2615e9313092c9e1022c20c
+    name: bpdm-pool
+    type: application
+    urls:
+    - https://github.com/catenax-ng/product-bpdm/releases/download/bpdm-pool-4.0.0/bpdm-pool-4.0.0.tgz
+    version: 4.0.0
+generated: "2022-12-15T12:09:23.63259651Z"
