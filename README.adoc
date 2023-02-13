@@ -1,7 +1,8 @@
-= BPDM
+= DEPRECATED
 :icons: font
-:toc:
-:toclevels: 2
+
+This repository is deprecated.
+You can find the active repository for BPDM https://github.com/eclipse-tractusx/bpdm[here] and its catenax-ng fork https://github.com/catenax-ng/tx-bpdm[here].
 
 == Project Description
 
